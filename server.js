@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require("cors");
+const { Console } = require("console");
 app.use(cors());
 
 // Initialize the main project folder
@@ -29,4 +30,15 @@ function listening() {
 //Get data route
 app.get("/getData", function (req, res) {
   res.send(projectData);
+});
+
+//Post data route
+app.post("postData", function (req, res) {
+  let entry = {
+    temp: req.body.temp,
+    date: req.body.date,
+    userData: req.body.userData,
+  };
+  Console.log(entry);
+  projectData.push(entry);
 });
