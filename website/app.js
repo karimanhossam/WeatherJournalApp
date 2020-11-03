@@ -6,7 +6,7 @@ let apiKey = "&appid=120b23c2ee4e14313b56a5f17616d19d";
 let d = new Date();
 let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
-// Async get
+// Async get to fetch data from API
 const getData = async (baseURL, zipCode, key) => {
   const res = await fetch(baseURL + zipCode + key);
   try {
@@ -38,6 +38,23 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
+//Async get to update UI
+const updateUI = async () => {
+  const request = await fetch("/getData");
+  try {
+    const allData = await request.json();
+    document.getElementById(
+      "temp"
+    ).innerHTML = `Temperature: ${allData[0].temp}`;
+    document.getElementById("date").innerHTML = `Date: ${allData[0].date}`;
+    document.getElementById(
+      "content"
+    ).innerHTML = `I feel ${allData[0].userData}`;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
+
 document.getElementById("generate").addEventListener("click", eventListener);
 
 function eventListener() {
@@ -49,6 +66,6 @@ function eventListener() {
       temp: data.main.temp,
       date: newDate,
       userData: userData,
-    });
+    }).then(updateUI());
   });
 }
