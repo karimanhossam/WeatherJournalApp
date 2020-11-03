@@ -33,7 +33,7 @@ app.get("/getData", function (req, res) {
 });
 
 //Post data route
-app.post("postData", function (req, res) {
+app.post("/postData", function (req, res) {
   let entry = {
     temp: req.body.temp,
     date: req.body.date,

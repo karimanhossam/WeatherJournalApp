@@ -39,3 +39,14 @@ const postData = async (url = "", data = {}) => {
     console.log("error", error);
   }
 };
+
+document.getElementById("generate").addEventListener("click", eventListener);
+
+eventListener = () => {
+  let zipCode = document.getElementById("zip");
+  let userData = document.getElementById("feelings");
+
+  getData(baseURL, zipCode, apiKey).then(function (data) {
+    Console.log(data);
+  });
+};
