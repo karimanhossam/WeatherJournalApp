@@ -1,7 +1,5 @@
-const { Console } = require("console");
-
 /* Global Variables */
-let baseURL = "api.openweathermap.org/data/2.5/weather?zip=";
+let baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
 let apiKey = "&appid=120b23c2ee4e14313b56a5f17616d19d";
 
 // Create a new date instance dynamically with JS
@@ -33,7 +31,7 @@ const postData = async (url = "", data = {}) => {
 
   try {
     const newData = await response.json();
-    Console.log(newData);
+    console.log(newData);
     return newData;
   } catch (error) {
     console.log("error", error);
@@ -42,11 +40,15 @@ const postData = async (url = "", data = {}) => {
 
 document.getElementById("generate").addEventListener("click", eventListener);
 
-eventListener = () => {
-  let zipCode = document.getElementById("zip");
-  let userData = document.getElementById("feelings");
+function eventListener() {
+  let zipCode = document.getElementById("zip").value;
+  let userData = document.getElementById("feelings").value;
 
   getData(baseURL, zipCode, apiKey).then(function (data) {
-    Console.log(data);
+    postData("/postData", {
+      temp: data.main.temp,
+      date: newDate,
+      userData: userData,
+    });
   });
-};
+}
