@@ -24,3 +24,8 @@ app.listen(8000, listening);
 function listening() {
   console.log("Listening on port 8000");
 }
+
+//Get data route
+app.get("/getData", function (req, res) {
+  res.send(projectData);
+});
