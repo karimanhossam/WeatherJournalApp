@@ -19,10 +19,11 @@ app.use(cors());
 app.use(express.static("website"));
 
 // Setup Server
-app.listen(8000, listening);
+const port = 8000;
+app.listen(port, listening);
 
 function listening() {
-  console.log("Listening on port 8000");
+  console.log(`listening on port ${port}`);
 }
 
 //Get data route
