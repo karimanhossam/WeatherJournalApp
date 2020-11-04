@@ -13,7 +13,7 @@ This project is about creating an asynchronous web app that uses Web API and use
 - server.js
 - README.md
 
-##Dependencies
+## Dependencies
 
 - HTML
 - CSS
