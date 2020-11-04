@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+projectData = {};
 
 // Require Express to run server and routes
 const express = require("express");
@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require("cors");
-const { Console } = require("console");
 app.use(cors());
 
 // Initialize the main project folder
@@ -40,6 +39,6 @@ app.post("/postData", function (req, res) {
     userData: req.body.userData,
   };
   console.log(entry);
-  projectData.push(entry);
+  projectData = entry;
   console.log("Data added successfully");
 });
